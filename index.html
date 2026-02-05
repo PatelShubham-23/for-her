@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Anvi</title>
+    <title>For Aditi</title>
     <style>
         body {
             display: flex;
@@ -12,15 +12,15 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: #f9f9f9; /* Clean light background */
+            background-color: #f9f9f9;
             font-family: 'Arial', sans-serif;
+            overflow: hidden;
         }
 
         .container {
             text-align: center;
         }
 
-        /* The GIF container */
         .gif-card {
             width: 250px;
             height: 250px;
@@ -29,8 +29,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            /* Subtle shadow like your photo */
+            margin: 0 auto 20px auto;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
         }
 
@@ -40,7 +39,7 @@
         }
 
         h1 {
-            color: #bd1e2c; /* Deep red color */
+            color: #bd1e2c; 
             font-size: 1.8rem;
             margin-bottom: 30px;
             font-weight: bold;
@@ -53,26 +52,24 @@
             align-items: center;
         }
 
-        /* Button Styles */
         button {
             border: none;
-            border-radius: 50px; /* Pill shape */
+            border-radius: 50px;
             padding: 10px 25px;
             font-size: 1rem;
             font-weight: bold;
             color: white;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.2s ease;
         }
 
         .yes-button {
-            background-color: #4CAF50; /* Green */
+            background-color: #4CAF50;
         }
 
         .no-button {
-            background-color: #E53935; /* Red */
+            background-color: #E53935;
         }
-
     </style>
 </head>
 <body>
@@ -82,43 +79,7 @@
             <img src="https://media.tenor.com/9nF_Xy9Y2vUAAAAi/bubu-dudu-bubu.gif" alt="Cute character">
         </div>
 
-        <h1>Anvi, will you be my Valentine?</h1>
+        <h1>Aditi, will you be my Valentine?</h1>
 
         <div class="btn-container">
-            <button class="yes-button" onclick="handleYesClick()">Yes</button>
-            <button class="no-button" onclick="handleNoClick()">No</button>
-        </div>
-    </div>
-
-    <script>
-        let messageIndex = 0;
-        const messages = [
-            "No",
-            "Are you sure?",
-            "Pleease?",
-            "Don't do this to me :(",
-            "I'm gonna cry...",
-            "You're breaking my heart"
-        ];
-
-        function handleNoClick() {
-            const noButton = document.querySelector('.no-button');
-            const yesButton = document.querySelector('.yes-button');
-
-            // Change the No button text
-            noButton.textContent = messages[messageIndex];
-            messageIndex = (messageIndex + 1) % messages.length;
-
-            // Make the Yes button grow
-            const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-            yesButton.style.fontSize = (currentSize * 1.4) + "px";
-            yesButton.style.padding = (parseFloat(window.getComputedStyle(yesButton).paddingTop) * 1.2) + "px " + 
-                                     (parseFloat(window.getComputedStyle(yesButton).paddingLeft) * 1.2) + "px";
-        }
-
-        function handleYesClick() {
-            window.location.href = "yes_page.html";
-        }
-    </script>
-</body>
-</html>
+            <button class="yes-button
