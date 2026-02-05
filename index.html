@@ -5,126 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Aditi</title>
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f9f9f9;
-            font-family: 'Arial', sans-serif;
-            overflow-x: hidden; /* Prevents side-scrolling on mobile */
-        }
-
-        .container {
-            text-align: center;
-            padding: 20px;
-            width: 90%; /* Occupies most of the screen width on mobile */
-            max-width: 400px; /* Limits size on computers */
-        }
-
-        .gif-card {
-            width: 100%; /* Adapts to container width */
-            max-width: 250px; 
-            aspect-ratio: 1 / 1; /* Keeps the box square */
-            background: white;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px auto;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
-            overflow: hidden;
-        }
-
-        .gif-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensures the photo fills the square nicely */
-        }
-
-        h1 {
-            color: #bd1e2c; 
-            font-size: 1.5rem; /* Slightly smaller for mobile readability */
-            margin-bottom: 30px;
-            font-weight: bold;
-            line-height: 1.3;
-        }
-
-        .btn-container {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap; /* Allows buttons to stack if they grow too large */
-        }
-
-        button {
-            border: none;
-            border-radius: 50px;
-            padding: 12px 25px;
-            font-size: 1rem;
-            font-weight: bold;
-            color: white;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .yes-button {
-            background-color: #4CAF50;
-        }
-
-        .no-button {
-            background-color: #E53935;
-        }
+        body { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background-color: #f9f9f9; font-family: 'Arial', sans-serif; overflow-x: hidden; }
+        .container { text-align: center; padding: 20px; width: 90%; max-width: 400px; }
+        .gif-card { width: 100%; max-width: 250px; aspect-ratio: 1 / 1; background: white; border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow: hidden; }
+        .gif-card img { width: 100%; height: 100%; object-fit: cover; }
+        h1 { color: #bd1e2c; font-size: 1.5rem; margin-bottom: 30px; font-weight: bold; line-height: 1.3; }
+        .btn-container { display: flex; gap: 15px; justify-content: center; align-items: center; flex-wrap: wrap; }
+        button { border: none; border-radius: 50px; padding: 12px 25px; font-size: 1rem; font-weight: bold; color: white; cursor: pointer; transition: all 0.2s ease; }
+        .yes-button { background-color: #4CAF50; }
+        .no-button { background-color: #E53935; }
     </style>
 </head>
 <body>
-
     <div class="container">
         <div class="gif-card">
             <img src="teddy.jpg" alt="For Aditi">
         </div>
-
         <h1>Aditi, will you be my Valentine?</h1>
-
         <div class="btn-container">
             <button class="yes-button" id="yesBtn" onclick="handleYesClick()">Yes</button>
             <button class="no-button" id="noBtn" onclick="handleNoClick()">No</button>
         </div>
     </div>
-
     <script>
         let messageIndex = 0;
-        const messages = [
-            "No",
-            "Are you sure?",
-            "Really sure??",
-            "Aditi please? :(",
-            "Think again!",
-            "Last chance!",
-            "You're breaking my heart ;("
-        ];
-
+        const messages = ["No", "Are you sure?", "Really sure??", "Aditi please? :(", "Think again!", "Last chance!", "You're breaking my heart ;("];
         function handleNoClick() {
             const noButton = document.getElementById('noBtn');
             const yesButton = document.getElementById('yesBtn');
-
             noButton.textContent = messages[messageIndex];
             messageIndex = (messageIndex + 1) % messages.length;
-
             const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-            // Grows the button each time No is clicked
             yesButton.style.fontSize = (currentSize * 1.4) + "px";
-            
             const currentPaddingY = parseFloat(window.getComputedStyle(yesButton).paddingTop);
             const currentPaddingX = parseFloat(window.getComputedStyle(yesButton).paddingLeft);
             yesButton.style.padding = (currentPaddingY * 1.2) + "px " + (currentPaddingX * 1.2) + "px";
         }
-
         function handleYesClick() {
-            window.location.href = "yes_page.html";
+            // This small delay ensures the browser registers the click to allow music
+            window.location.href = "yes_page.html?play=true";
         }
     </script>
 </body>
