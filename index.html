@@ -10,39 +10,44 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             background-color: #f9f9f9;
             font-family: 'Arial', sans-serif;
-            overflow: hidden;
         }
 
         .container {
             text-align: center;
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
         }
 
         .gif-card {
-            width: 250px;
-            height: 250px;
+            width: 200px;
+            height: 200px;
             background: white;
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px auto;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden; /* Ensures the image stays inside the card */
         }
 
         .gif-card img {
-            width: 80%;
-            height: auto;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Keeps the teddy looking perfect */
         }
 
         h1 {
             color: #bd1e2c; 
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 30px;
             font-weight: bold;
+            line-height: 1.2;
         }
 
         .btn-container {
@@ -50,17 +55,20 @@
             gap: 15px;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap; 
         }
 
         button {
             border: none;
             border-radius: 50px;
-            padding: 10px 25px;
+            padding: 12px 25px;
             font-size: 1rem;
             font-weight: bold;
             color: white;
             cursor: pointer;
             transition: all 0.2s ease;
+            min-width: 80px;
+            display: inline-block;
         }
 
         .yes-button {
@@ -76,10 +84,45 @@
 
     <div class="container">
         <div class="gif-card">
-            <img src="https://media.tenor.com/9nF_Xy9Y2vUAAAAi/bubu-dudu-bubu.gif" alt="Cute character">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpndW12cnZ5eG93N3R5eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpN795J7C1F/giphy.gif" alt="Cute Teddy">
         </div>
 
         <h1>Aditi, will you be my Valentine?</h1>
 
         <div class="btn-container">
-            <button class="yes-button
+            <button class="yes-button" id="yesBtn" onclick="handleYesClick()">Yes</button>
+            <button class="no-button" id="noBtn" onclick="handleNoClick()">No</button>
+        </div>
+    </div>
+
+    <script>
+        let messageIndex = 0;
+        const messages = [
+            "No",
+            "Are you sure?",
+            "Aditi please? :(",
+            "Think again!",
+            "You're breaking my heart ;("
+        ];
+
+        function handleNoClick() {
+            const noButton = document.getElementById('noBtn');
+            const yesButton = document.getElementById('yesBtn');
+
+            noButton.textContent = messages[messageIndex];
+            messageIndex = (messageIndex + 1) % messages.length;
+
+            const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = (currentSize * 1.3) + "px";
+            
+            const currentPaddingY = parseFloat(window.getComputedStyle(yesButton).paddingTop);
+            const currentPaddingX = parseFloat(window.getComputedStyle(yesButton).paddingLeft);
+            yesButton.style.padding = (currentPaddingY * 1.1) + "px " + (currentPaddingX * 1.1) + "px";
+        }
+
+        function handleYesClick() {
+            window.location.href = "yes_page.html";
+        }
+    </script>
+</body>
+</html>
