@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Will you be my Valentine?</title>
+    <style>
+        body { text-align: center; margin-top: 50px; font-family: sans-serif; }
+        .buttons { margin-top: 20px; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h1>Will you be my Valentine?</h1>
+    
+    <div class="buttons">
+        <button class="yes-button" onclick="handleYesClick()">Yes</button>
+        <button class="no-button" onclick="handleNoClick()">No</button>
+    </div>
+
+    <script>
+        let messageIndex = 0;
+        const messages = [
+            "Are you sure?",
+            "Really sure??",
+            "Think again!",
+            "Last chance!",
+            "Surely not?",
+            "You might regret this!",
+            "Give it another thought!",
+            "Are you absolutely sure?",
+            "This could be a mistake!",
+            "Have a heart!"
+        ];
+
+        function handleNoClick() {
+            // Added the missing "=" signs here
+            const noButton = document.querySelector('.no-button');
+            const yesButton = document.querySelector('.yes-button');
+
+            noButton.textContent = messages[messageIndex];
+            messageIndex = (messageIndex + 1) % messages.length;
+
+            const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+            // Fixed the math syntax here
+            yesButton.style.fontSize = (currentSize * 1.5) + "px";
+        }
+
+        function handleYesClick() {
+            // This will look for a file named yes_page.html in your folder
+            window.location.href = "yes_page.html";
+        }
+    </script>
+</body>
+</html>
