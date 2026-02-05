@@ -2,52 +2,121 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Will you be my Valentine?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Anvi</title>
     <style>
-        body { text-align: center; margin-top: 50px; font-family: sans-serif; }
-        .buttons { margin-top: 20px; }
-        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9; /* Clean light background */
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        /* The GIF container */
+        .gif-card {
+            width: 250px;
+            height: 250px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            /* Subtle shadow like your photo */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+        }
+
+        .gif-card img {
+            width: 80%;
+            height: auto;
+        }
+
+        h1 {
+            color: #bd1e2c; /* Deep red color */
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Button Styles */
+        button {
+            border: none;
+            border-radius: 50px; /* Pill shape */
+            padding: 10px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .yes-button {
+            background-color: #4CAF50; /* Green */
+        }
+
+        .no-button {
+            background-color: #E53935; /* Red */
+        }
+
     </style>
 </head>
 <body>
 
-    <h1>Will you be my Valentine?</h1>
-    
-    <div class="buttons">
-        <button class="yes-button" onclick="handleYesClick()">Yes</button>
-        <button class="no-button" onclick="handleNoClick()">No</button>
+    <div class="container">
+        <div class="gif-card">
+            <img src="https://media.tenor.com/9nF_Xy9Y2vUAAAAi/bubu-dudu-bubu.gif" alt="Cute character">
+        </div>
+
+        <h1>Anvi, will you be my Valentine?</h1>
+
+        <div class="btn-container">
+            <button class="yes-button" onclick="handleYesClick()">Yes</button>
+            <button class="no-button" onclick="handleNoClick()">No</button>
+        </div>
     </div>
 
     <script>
         let messageIndex = 0;
         const messages = [
+            "No",
             "Are you sure?",
-            "Really sure??",
-            "Think again!",
-            "Last chance!",
-            "Surely not?",
-            "You might regret this!",
-            "Give it another thought!",
-            "Are you absolutely sure?",
-            "This could be a mistake!",
-            "Have a heart!"
+            "Pleease?",
+            "Don't do this to me :(",
+            "I'm gonna cry...",
+            "You're breaking my heart"
         ];
 
         function handleNoClick() {
-            // Added the missing "=" signs here
             const noButton = document.querySelector('.no-button');
             const yesButton = document.querySelector('.yes-button');
 
+            // Change the No button text
             noButton.textContent = messages[messageIndex];
             messageIndex = (messageIndex + 1) % messages.length;
 
+            // Make the Yes button grow
             const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-            // Fixed the math syntax here
-            yesButton.style.fontSize = (currentSize * 1.5) + "px";
+            yesButton.style.fontSize = (currentSize * 1.4) + "px";
+            yesButton.style.padding = (parseFloat(window.getComputedStyle(yesButton).paddingTop) * 1.2) + "px " + 
+                                     (parseFloat(window.getComputedStyle(yesButton).paddingLeft) * 1.2) + "px";
         }
 
         function handleYesClick() {
-            // This will look for a file named yes_page.html in your folder
             window.location.href = "yes_page.html";
         }
     </script>
