@@ -12,7 +12,7 @@
         .gif-card img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; }
         p { color: #d63384; font-size: 1.3rem; font-weight: bold; }
         .music-controls { margin-top: 15px; }
-        .music-btn { background-color: #d63384; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .music-btn { background-color: #d63384; color: white; border: none; padding: 12px 25px; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1rem; box-shadow: 0 4px 10px rgba(214, 51, 132, 0.3); }
         .heart { position: absolute; color: #ff4d6d; font-size: 20px; animation: float 4s linear infinite; opacity: 0; bottom: -10%; }
         @keyframes float { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
     </style>
@@ -20,7 +20,7 @@
 <body>
 
     <audio id="bgMusic" loop>
-        <source src="https://www.mboxdrive.com/Perfect_Instrumental.mp3" type="audio/mpeg">
+        <source src="perfect.mp3" type="audio/mpeg">
     </audio>
 
     <div class="container">
@@ -30,7 +30,7 @@
         </div>
         <p>See you soon, Aditi! ✨</p>
         <div class="music-controls">
-            <button class="music-btn" id="playBtn" onclick="toggleMusic()">⏸ Playing Perfect...</button>
+            <button class="music-btn" id="playBtn" onclick="toggleMusic()">🎵 Play "Perfect"</button>
         </div>
     </div>
 
@@ -38,12 +38,14 @@
         const audio = document.getElementById('bgMusic');
         const playBtn = document.getElementById('playBtn');
 
-        // Check if we should auto-play
+        // Auto-play attempt
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('play') === 'true') {
-                audio.play().catch(e => {
-                    playBtn.textContent = "🎵 Play Perfect";
+                audio.play().then(() => {
+                    playBtn.textContent = "⏸ Playing Perfect...";
+                }).catch(e => {
+                    console.log("Autoplay blocked, waiting for user click.");
                 });
             }
         };
